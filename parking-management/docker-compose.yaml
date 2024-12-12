@@ -1,0 +1,58 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: parking_management_db
+
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+
+
+
+
+
+
+#version: '3.3'
+#
+#services:
+#  db:
+#    image: postgres:15
+#    restart: always
+#    environment:
+#      POSTGRES_USER: root
+#      POSTGRES_PASSWORD: root
+#      POSTGRES_DB: parking_management_db
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - db-data:/var/lib/postgresql/data
+#
+#  app:
+#    image: openjdk:17-slim
+#    container_name: parking-management-app
+#    command: ["sh", "-c", "cd /app && ./mvnw spring-boot:run"]
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - db
+#    volumes:
+#      - .:/app
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/parking_management_db
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+#
+#volumes:
+#  db-data:
